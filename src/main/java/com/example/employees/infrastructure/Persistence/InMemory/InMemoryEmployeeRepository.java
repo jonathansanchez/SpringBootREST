@@ -2,13 +2,18 @@ package com.example.employees.infrastructure.Persistence.InMemory;
 
 import com.example.employees.domain.Employee;
 import com.example.employees.domain.EmployeeRepository;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Service("EmployeeRepository")
+/**
+ * Comments for this example
+ */
+//@Transactional
+//@Repository
 public class InMemoryEmployeeRepository implements EmployeeRepository {
 
     private static final AtomicLong counter = new AtomicLong();
