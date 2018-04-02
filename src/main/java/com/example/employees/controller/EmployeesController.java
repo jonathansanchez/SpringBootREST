@@ -16,17 +16,18 @@ import java.util.List;
 @RequestMapping("/v1")
 public class EmployeesController {
 
-    @Autowired
     private EmployeeService employeeService;
 
-    /*public EmployeesController(EmployeeService employeeService) {
+    //Dependency Injection Constructor
+    @Autowired
+    public EmployeesController(EmployeeService employeeService) {
         this.employeeService = employeeService;
-    }*/
+    }
 
-    @RequestMapping(value = "/employee/", method = RequestMethod.GET)
+    @RequestMapping(value = "/employees", method = RequestMethod.GET)
     public ResponseEntity<List<Employee>> all() {
         List<Employee> employees = employeeService.findAll();
-        if (employees.isEmpty()) {
+        if (null == employees || employees.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
